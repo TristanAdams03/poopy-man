@@ -13,7 +13,7 @@ h = []
 i = []
 j = []
 k = []
-end = False
+BEND = False
 biglist = [a, b, c, d, e, f, g, h, i, j, k]
 active = 0
 
@@ -26,7 +26,7 @@ def on_message(client, userdata, message):
     if 'BEGIN' in data:
         pass
     elif 'END' in data:
-        end = True    
+        BEND = True    
     elif 'SHAPE' in data:
         print("New Shape: ", data)
         active += 1
@@ -35,7 +35,7 @@ def on_message(client, userdata, message):
     print(data)
 
 
-
+# What is this function?
 def draw_shape(submitted_shape):
     x = []
     y = []
@@ -59,7 +59,7 @@ client.on_message = on_message
 client.connect(broker, port)
 
 
-while end != True:
+while BEND != True:
     client.loop_start()
     client.subscribe("eoc/pic")
     client.loop_stop() #stop the loop
